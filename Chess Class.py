@@ -62,7 +62,17 @@ class Board:
         ans += x 
         return ans
     
-    
+    def has_moved(self,x,y): 
+        
+        piece = self.board[x][y] 
+        org_board = Board() 
+        org_pos = org_board.find_pieces(piece)
+        
+        
+        if (x,y) in org_pos: 
+            return False  
+        else: 
+            return True  
     
     def is_empty(self,x,y):
         '''
