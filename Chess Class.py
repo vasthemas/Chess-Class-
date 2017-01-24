@@ -223,7 +223,7 @@ class Board:
             if simu_game.in_danger(mov[0],mov[1]) == False:     
                         checkless_moves.append(mov)
 
-        print checkless_moves 
+        
         if len(checkless_moves) == 0:   
                 CHECKMATE = True
             
@@ -240,7 +240,7 @@ class Board:
    
             
   
-     def is_possible(self,x,y,v,w,player):
+    def is_possible(self,x,y,v,w,player):
         '''
         determines if the given move allowed to be placed in the game
         '''
@@ -249,8 +249,7 @@ class Board:
         move = (x,y)
         piece = self.board[x][y]
         n_piece = self.board[v][w]
-        print move
-        print n_mov
+        
         
         if piece == '0 ' :
  
@@ -280,8 +279,7 @@ class Board:
            c = (move[0] + mov[0],move[1] + mov[1])
            if 8 > c[0] > -1 and 8 > c[1] > -1: 
                 possible_mov.append(c)
-        print 'possible_mov'
-        print possible_mov
+        
         # All passable moves that are not obstructed by player's pieces   
         for mov in possible_mov:
             piece_mov = self.board[mov[0]][mov[1]]
@@ -300,10 +298,7 @@ class Board:
                     impassable.append(mov)
         
         #print 'lists of possible'
-        print 'passable'
-        print passable 
-        print 'impassable'
-        print impassable
+        
         # Knight exception for passable moves 
         if piece[1] == 'N':
             if n_mov in passable: 
@@ -314,28 +309,27 @@ class Board:
          
         else:
             if n_mov not in passable:
-                print 'also here'
+                
                 return False 
             
             else:
                 
                 path = self.is_inpath(x,y,v,w)
-                print 'path'
-                print path
+               
                 for mov in path[:-1]: 
-                      print mov 	
+                      	
                       moveable_space = self.board[mov[0]][mov[1]]
-                      print moveable_space
+                      
                       if moveable_space != '0 ':
-                            print 'here 3'
+                            
                             return False 
                         
                      
                 if len(set(impassable).intersection(path)) > 0:
-                            print 'not here'
+                            
                             return False
                 else:
-                            print 'here' 
+                            
                             return True
 
     
@@ -401,22 +395,8 @@ def play():
           
  
          
-test= Board()
+play() 
 
-test.move('e2','e3','B')
-
-test.move('d1','h5','B')
-
-test.move('h5','f7','B')
-
-test.move('f1','c4','B')
-
-
-
-test.check_or_checkmate('B')
-
-
-print test
 
 
             
