@@ -359,8 +359,39 @@ class Board:
            
         else: 
             return False
+
+#########################################################################################
+ #User Interface
+###################################################################################          
           
- 
+          
+def play():
+            
+    game = Board()
+    print game
+    player = 'B'
+
+    while CHECKMATE == False:        
+        
+         if player == 'B':
+             Player = 'Black'
+         elif player == 'W':
+             Player = 'White'
+
+         move = raw_input( Player + "'s Move: ")  
+
+         current_move = move[0:2]
+         new_move =  move[2:4]
+         if game.move(current_move,new_move, player) == False:
+             print 'Input incorrect: please try again'
+         else:
+             game.check_or_checkmate(player) 
+             print game
+             player =  game.switch_player(player)
+             
+ #        game.move(current_move,new_move, player)
+          
+play() 
 
 
             
